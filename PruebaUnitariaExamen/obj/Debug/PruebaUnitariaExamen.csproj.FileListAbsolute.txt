@@ -1,0 +1,2 @@
+C:\Users\Isidro Aguilar\Source\Repos\AplicacionEmpresarialFinal\PruebaUnitariaExamen\obj\Debug\PruebaUnitariaExamen.csprojResolveAssemblyReference.cache
+C:\Users\Isidro Aguilar\Source\Repos\Soto\PruebaUnitariaExamen\obj\Debug\PruebaUnitariaExamen.csprojResolveAssemblyReference.cache

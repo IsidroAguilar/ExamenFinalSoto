@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MICO.dbo.Abono' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Abono">
+    <Key>
+      <PropertyRef Name="IdAbono" />
+      <PropertyRef Name="IdPagoConsultorio" />
+      <PropertyRef Name="IdUsuarioMico" />
+      <PropertyRef Name="IdPaciente" />
+      <PropertyRef Name="Monto" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="IdConsultorio" />
+    </Key>
+    <Property Name="IdAbono" Type="int" Nullable="false" />
+    <Property Name="IdPagoConsultorio" Type="int" Nullable="false" />
+    <Property Name="IdUsuarioMico" Type="int" Nullable="false" />
+    <Property Name="IdPaciente" Type="int" Nullable="false" />
+    <Property Name="Monto" Type="money" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="IdConsultorio" Type="int" Nullable="false" />
+    <Property Name="Observacion" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Banco">
+    <Key>
+      <PropertyRef Name="IdBanco" />
+    </Key>
+    <Property Name="IdBanco" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdConsultorio" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Cuenta" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Titular" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cita">
+    <Key>
+      <PropertyRef Name="IdCita" />
+    </Key>
+    <Property Name="IdCita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdConsultorio" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="Start" Type="datetime" Nullable="false" />
+    <Property Name="End" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="RecurrenceID" Type="int" />
+    <Property Name="IsAllDay" Type="bit" />
+    <Property Name="RecurrenceRule" Type="nvarchar" MaxLength="300" />
+    <Property Name="RecurrenceException" Type="nvarchar" MaxLength="300" />
+    <Property Name="StartTimezone" Type="nvarchar" MaxLength="50" />
+    <Property Name="EndTimezone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tipo" Type="int" />
+  </EntityType>
+  <EntityType Name="Consultorio">
+    <Key>
+      <PropertyRef Name="IdConsultorio" />
+    </Key>
+    <Property Name="IdConsultorio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Rfc" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Calle" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NumeroExterior" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="NumeroInterior" Type="nvarchar" MaxLength="10" />
+    <Property Name="Colonia" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CodigoPostal" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="IdMunicipio" Type="int" Nullable="false" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="IdPais" Type="int" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="320" Nullable="false" />
+    <Property Name="Expiracion" Type="date" Nullable="false" />
+    <Property Name="IdUsuarioMico" Type="int" />
+    <Property Name="Logo" Type="nvarchar" MaxLength="320" />
+    <Property Name="Tema" Type="nvarchar" MaxLength="100" />
+    <Property Name="Estatus" Type="int" />
+  </EntityType>
+  <EntityType Name="Cuenta">
+    <Key>
+      <PropertyRef Name="IdCuenta" />
+    </Key>
+    <Property Name="IdCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdConsultorio" Type="int" Nullable="false" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+    <Property Name="Balance" Type="money" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogEpcon">
+    <Key>
+      <PropertyRef Name="IdLogEpcon" />
+    </Key>
+    <Property Name="IdLogEpcon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUsuarioEpcon" Type="int" Nullable="false" />
+    <Property Name="FechaHora" Type="datetime" Nullable="false" />
+    <Property Name="Ip" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogMico">
+    <Key>
+      <PropertyRef Name="IdLogMico" />
+    </Key>
+    <Property Name="IdLogMico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUsuarioMico" Type="int" Nullable="false" />
+    <Property Name="FechaHora" Type="datetime" Nullable="false" />
+    <Property Name="Ip" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="IdConsultorio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Movimiento">
+    <Key>
+      <PropertyRef Name="IdMovimiento" />
+    </Key>
+    <Property Name="IdMovimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCuenta" Type="int" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdConsultorio" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="money" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Observaciones" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdCuentaOriginal" Type="int" />
+    <Property Name="IdCuentaDestino" Type="int" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Municipio">
+    <Key>
+      <PropertyRef Name="IdMunicipio" />
+    </Key>
+    <Property Name="IdMunicipio" Type="int" Nullable="false" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="IdPaciente" />
+    </Key>
+    <Property Name="IdPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApellidoPaterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ApellidoMaterno" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CURP" Type="nvarchar" MaxLength="25" />
+    <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+    <Property Name="Genero" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Fotografia" Type="nvarchar(max)" />
+    <Property Name="ClavePaciente" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Calle" Type="nvarchar" MaxLength="50" />
+    <Property Name="Colonia" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="30" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="NumExt" Type="nvarchar" MaxLength="10" />
+    <Property Name="NumInt" Type="nvarchar" MaxLength="10" />
+    <Property Name="CodigoPostal" Type="int" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+    <Property Name="Celular" Type="nvarchar" MaxLength="20" />
+    <Property Name="IdMunicipio" Type="int" />
+    <Property Name="IdEstado" Type="int" />
+    <Property Name="IdConsultorio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PagoConsultorio">
+    <Key>
+      <PropertyRef Name="IdPagoConsultorio" />
+    </Key>
+    <Property Name="IdPagoConsultorio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPaciente" Type="int" Nullable="false" />
+    <Property Name="IdConsultorio" Type="int" Nullable="false" />
+    <Property Name="IdTarifa" Type="int" Nullable="false" />
+    <Property Name="Ajuste" Type="money" Nullable="false" />
+    <Property Name="Observacion" Type="nvarchar" MaxLength="120" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PagoMico">
+    <Key>
+      <PropertyRef Name="IdPago" />
+    </Key>
+    <Property Name="IdPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdConsultorio" Type="int" Nullable="false" />
+    <Property Name="Subtotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Iva" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MetodoPago" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaHora" Type="datetime" Nullable="false" />
+    <Property Name="IdPlan" Type="int" />
+    <Property Name="Observación" Type="nvarchar" MaxLength="250" />
+    <Property Name="IdTransaccion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Comprobante" Type="nvarchar" MaxLength="300" />
+    <Property Name="Estatus" Type="int" />
+  </EntityType>
+  <EntityType Name="PlanPago">
+    <Key>
+      <PropertyRef Name="IdPlan" />
+    </Key>
+    <Property Name="IdPlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Costo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Duracion" Type="int" Nullable="false" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Receta">
+    <Key>
+      <PropertyRef Name="IdReceta" />
+    </Key>
+    <Property Name="IdReceta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUsuarioMico" Type="int" Nullable="false" />
+    <Property Name="IdPaciente" Type="int" />
+    <Property Name="IdConsultorio" Type="int" />
+    <Property Name="IdConsulta" Type="int" />
+    <Property Name="Contenido" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FolioReceta" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TarifaConsultorio">
+    <Key>
+      <PropertyRef Name="IdTarifa" />
+    </Key>
+    <Property Name="IdTarifa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdConsultorio" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Costo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Observaciones" Type="nvarchar(max)" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuarioEpcon">
+    <Key>
+      <PropertyRef Name="IdUsuarioEpcon" />
+    </Key>
+    <Property Name="IdUsuarioEpcon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Contrasena" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Privilegio" Type="xml" Nullable="false" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuarioMico">
+    <Key>
+      <PropertyRef Name="IdUsuarioMico" />
+    </Key>
+    <Property Name="IdUsuarioMico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Contrasena" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Privilegio" Type="xml" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+    <Property Name="IdConsultorio" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Banco_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="1" />
+    <End Role="Banco" Type="Self.Banco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="Banco">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cita_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogEpcon_UsuarioEpcon">
+    <End Role="UsuarioEpcon" Type="Self.UsuarioEpcon" Multiplicity="1" />
+    <End Role="LogEpcon" Type="Self.LogEpcon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioEpcon">
+        <PropertyRef Name="IdUsuarioEpcon" />
+      </Principal>
+      <Dependent Role="LogEpcon">
+        <PropertyRef Name="IdUsuarioEpcon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogMico_UsuarioMico">
+    <End Role="UsuarioMico" Type="Self.UsuarioMico" Multiplicity="1" />
+    <End Role="LogMico" Type="Self.LogMico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioMico">
+        <PropertyRef Name="IdUsuarioMico" />
+      </Principal>
+      <Dependent Role="LogMico">
+        <PropertyRef Name="IdUsuarioMico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_municipio_estado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="Municipio">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoMico_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="1" />
+    <End Role="PagoMico" Type="Self.PagoMico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="PagoMico">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receta_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="0..1" />
+    <End Role="Receta" Type="Self.Receta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="Receta">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receta_UsuarioMico">
+    <End Role="UsuarioMico" Type="Self.UsuarioMico" Multiplicity="1" />
+    <End Role="Receta" Type="Self.Receta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioMico">
+        <PropertyRef Name="IdUsuarioMico" />
+      </Principal>
+      <Dependent Role="Receta">
+        <PropertyRef Name="IdUsuarioMico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TarifaMico_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="1" />
+    <End Role="TarifaConsultorio" Type="Self.TarifaConsultorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="TarifaConsultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioMico_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="1" />
+    <End Role="UsuarioMico" Type="Self.UsuarioMico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="UsuarioMico">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MicoModelStoreContainer">
+    <EntitySet Name="Banco" EntityType="Self.Banco" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consultorio" EntityType="Self.Consultorio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogEpcon" EntityType="Self.LogEpcon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogMico" EntityType="Self.LogMico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Movimiento" EntityType="Self.Movimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PagoConsultorio" EntityType="Self.PagoConsultorio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PagoMico" EntityType="Self.PagoMico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlanPago" EntityType="Self.PlanPago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Receta" EntityType="Self.Receta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TarifaConsultorio" EntityType="Self.TarifaConsultorio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuarioEpcon" EntityType="Self.UsuarioEpcon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuarioMico" EntityType="Self.UsuarioMico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Abono" EntityType="Self.Abono" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Abono].[IdAbono] AS [IdAbono], 
+    [Abono].[IdPagoConsultorio] AS [IdPagoConsultorio], 
+    [Abono].[IdUsuarioMico] AS [IdUsuarioMico], 
+    [Abono].[IdPaciente] AS [IdPaciente], 
+    [Abono].[Monto] AS [Monto], 
+    [Abono].[Fecha] AS [Fecha], 
+    [Abono].[IdConsultorio] AS [IdConsultorio], 
+    [Abono].[Observacion] AS [Observacion]
+    FROM [dbo].[Abono] AS [Abono]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Banco_Consultorio" Association="Self.FK_Banco_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="Banco" EntitySet="Banco" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cita_Consultorio" Association="Self.FK_Cita_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogEpcon_UsuarioEpcon" Association="Self.FK_LogEpcon_UsuarioEpcon">
+      <End Role="UsuarioEpcon" EntitySet="UsuarioEpcon" />
+      <End Role="LogEpcon" EntitySet="LogEpcon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogMico_UsuarioMico" Association="Self.FK_LogMico_UsuarioMico">
+      <End Role="UsuarioMico" EntitySet="UsuarioMico" />
+      <End Role="LogMico" EntitySet="LogMico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_municipio_estado" Association="Self.FK_municipio_estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Municipio" EntitySet="Municipio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoMico_Consultorio" Association="Self.FK_PagoMico_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="PagoMico" EntitySet="PagoMico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receta_Consultorio" Association="Self.FK_Receta_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="Receta" EntitySet="Receta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receta_UsuarioMico" Association="Self.FK_Receta_UsuarioMico">
+      <End Role="UsuarioMico" EntitySet="UsuarioMico" />
+      <End Role="Receta" EntitySet="Receta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TarifaMico_Consultorio" Association="Self.FK_TarifaMico_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="TarifaConsultorio" EntitySet="TarifaConsultorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioMico_Consultorio" Association="Self.FK_UsuarioMico_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="UsuarioMico" EntitySet="UsuarioMico" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

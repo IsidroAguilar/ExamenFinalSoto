@@ -1,0 +1,12 @@
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\bin\Debug\MicoLib.dll.config
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\bin\Debug\MicoLib.dll
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\bin\Debug\MicoLib.pdb
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\bin\Debug\EntityFramework.dll
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\bin\Debug\Kendo.Mvc.dll
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\bin\Debug\EntityFramework.xml
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\obj\Debug\MicoLib.csprojResolveAssemblyReference.cache
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\obj\Debug\MicoLib.dll
+C:\Users\Isidro Aguilar\Source\Repos\MICO\MicoLib\obj\Debug\MicoLib.pdb

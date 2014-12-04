@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MicoModelStoreContainer" CdmEntityContainer="MicoEntities">
+    <EntitySetMapping Name="Banco">
+      <EntityTypeMapping TypeName="MicoModel.Banco">
+        <MappingFragment StoreEntitySet="Banco">
+          <ScalarProperty Name="IdBanco" ColumnName="IdBanco" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
+          <ScalarProperty Name="Titular" ColumnName="Titular" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cita">
+      <EntityTypeMapping TypeName="MicoModel.Cita">
+        <MappingFragment StoreEntitySet="Cita">
+          <ScalarProperty Name="IdCita" ColumnName="IdCita" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="End" ColumnName="End" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="RecurrenceID" ColumnName="RecurrenceID" />
+          <ScalarProperty Name="IsAllDay" ColumnName="IsAllDay" />
+          <ScalarProperty Name="RecurrenceRule" ColumnName="RecurrenceRule" />
+          <ScalarProperty Name="RecurrenceException" ColumnName="RecurrenceException" />
+          <ScalarProperty Name="StartTimezone" ColumnName="StartTimezone" />
+          <ScalarProperty Name="EndTimezone" ColumnName="EndTimezone" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consultorio">
+      <EntityTypeMapping TypeName="MicoModel.Consultorio">
+        <MappingFragment StoreEntitySet="Consultorio">
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Rfc" ColumnName="Rfc" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="NumeroExterior" ColumnName="NumeroExterior" />
+          <ScalarProperty Name="NumeroInterior" ColumnName="NumeroInterior" />
+          <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+          <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Expiracion" ColumnName="Expiracion" />
+          <ScalarProperty Name="IdUsuarioMico" ColumnName="IdUsuarioMico" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Tema" ColumnName="Tema" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cuenta">
+      <EntityTypeMapping TypeName="MicoModel.Cuenta">
+        <MappingFragment StoreEntitySet="Cuenta">
+          <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estado">
+      <EntityTypeMapping TypeName="MicoModel.Estado">
+        <MappingFragment StoreEntitySet="Estado">
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogEpcon">
+      <EntityTypeMapping TypeName="MicoModel.LogEpcon">
+        <MappingFragment StoreEntitySet="LogEpcon">
+          <ScalarProperty Name="IdLogEpcon" ColumnName="IdLogEpcon" />
+          <ScalarProperty Name="IdUsuarioEpcon" ColumnName="IdUsuarioEpcon" />
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogMico">
+      <EntityTypeMapping TypeName="MicoModel.LogMico">
+        <MappingFragment StoreEntitySet="LogMico">
+          <ScalarProperty Name="IdLogMico" ColumnName="IdLogMico" />
+          <ScalarProperty Name="IdUsuarioMico" ColumnName="IdUsuarioMico" />
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Movimiento">
+      <EntityTypeMapping TypeName="MicoModel.Movimiento">
+        <MappingFragment StoreEntitySet="Movimiento">
+          <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
+          <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="IdCuentaOriginal" ColumnName="IdCuentaOriginal" />
+          <ScalarProperty Name="IdCuentaDestino" ColumnName="IdCuentaDestino" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Municipio">
+      <EntityTypeMapping TypeName="MicoModel.Municipio">
+        <MappingFragment StoreEntitySet="Municipio">
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paciente">
+      <EntityTypeMapping TypeName="MicoModel.Paciente">
+        <MappingFragment StoreEntitySet="Paciente">
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CURP" ColumnName="CURP" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+          <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+          <ScalarProperty Name="ClavePaciente" ColumnName="ClavePaciente" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="NumExt" ColumnName="NumExt" />
+          <ScalarProperty Name="NumInt" ColumnName="NumInt" />
+          <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagoConsultorio">
+      <EntityTypeMapping TypeName="MicoModel.PagoConsultorio">
+        <MappingFragment StoreEntitySet="PagoConsultorio">
+          <ScalarProperty Name="IdPagoConsultorio" ColumnName="IdPagoConsultorio" />
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+          <ScalarProperty Name="IdTarifa" ColumnName="IdTarifa" />
+          <ScalarProperty Name="Ajuste" ColumnName="Ajuste" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagoMico">
+      <EntityTypeMapping TypeName="MicoModel.PagoMico">
+        <MappingFragment StoreEntitySet="PagoMico">
+          <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Iva" ColumnName="Iva" />
+          <ScalarProperty Name="MetodoPago" ColumnName="MetodoPago" />
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+          <ScalarProperty Name="Observación" ColumnName="Observación" />
+          <ScalarProperty Name="IdTransaccion" ColumnName="IdTransaccion" />
+          <ScalarProperty Name="Comprobante" ColumnName="Comprobante" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanPago">
+      <EntityTypeMapping TypeName="MicoModel.PlanPago">
+        <MappingFragment StoreEntitySet="PlanPago">
+          <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Receta">
+      <EntityTypeMapping TypeName="MicoModel.Receta">
+        <MappingFragment StoreEntitySet="Receta">
+          <ScalarProperty Name="IdReceta" ColumnName="IdReceta" />
+          <ScalarProperty Name="IdUsuarioMico" ColumnName="IdUsuarioMico" />
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+          <ScalarProperty Name="IdConsulta" ColumnName="IdConsulta" />
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+          <ScalarProperty Name="FolioReceta" ColumnName="FolioReceta" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TarifaConsultorio">
+      <EntityTypeMapping TypeName="MicoModel.TarifaConsultorio">
+        <MappingFragment StoreEntitySet="TarifaConsultorio">
+          <ScalarProperty Name="IdTarifa" ColumnName="IdTarifa" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuarioEpcon">
+      <EntityTypeMapping TypeName="MicoModel.UsuarioEpcon">
+        <MappingFragment StoreEntitySet="UsuarioEpcon">
+          <ScalarProperty Name="IdUsuarioEpcon" ColumnName="IdUsuarioEpcon" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Privilegio" ColumnName="Privilegio" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuarioMico">
+      <EntityTypeMapping TypeName="MicoModel.UsuarioMico">
+        <MappingFragment StoreEntitySet="UsuarioMico">
+          <ScalarProperty Name="IdUsuarioMico" ColumnName="IdUsuarioMico" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Privilegio" ColumnName="Privilegio" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Abono">
+      <EntityTypeMapping TypeName="MicoModel.Abono">
+        <MappingFragment StoreEntitySet="Abono">
+          <ScalarProperty Name="IdAbono" ColumnName="IdAbono" />
+          <ScalarProperty Name="IdPagoConsultorio" ColumnName="IdPagoConsultorio" />
+          <ScalarProperty Name="IdUsuarioMico" ColumnName="IdUsuarioMico" />
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdConsultorio" ColumnName="IdConsultorio" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

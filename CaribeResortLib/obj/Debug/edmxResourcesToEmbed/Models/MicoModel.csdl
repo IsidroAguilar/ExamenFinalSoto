@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MicoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Banco">
+    <Key>
+      <PropertyRef Name="IdBanco" />
+    </Key>
+    <Property Name="IdBanco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cuenta" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Titular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Consultorio" Relationship="Self.FK_Banco_Consultorio" FromRole="Banco" ToRole="Consultorio" />
+  </EntityType>
+  <EntityType Name="Cita">
+    <Key>
+      <PropertyRef Name="IdCita" />
+    </Key>
+    <Property Name="IdCita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="End" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RecurrenceID" Type="Int32" />
+    <Property Name="IsAllDay" Type="Boolean" />
+    <Property Name="RecurrenceRule" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="RecurrenceException" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="StartTimezone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EndTimezone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tipo" Type="Int32" />
+    <NavigationProperty Name="Consultorio" Relationship="Self.FK_Cita_Consultorio" FromRole="Cita" ToRole="Consultorio" />
+  </EntityType>
+  <EntityType Name="Consultorio">
+    <Key>
+      <PropertyRef Name="IdConsultorio" />
+    </Key>
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Rfc" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Calle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NumeroExterior" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NumeroInterior" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Colonia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CodigoPostal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdMunicipio" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="IdPais" Type="Int32" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Expiracion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUsuarioMico" Type="Int32" />
+    <Property Name="Logo" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+    <Property Name="Tema" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Estatus" Type="Int32" />
+    <NavigationProperty Name="Banco" Relationship="Self.FK_Banco_Consultorio" FromRole="Consultorio" ToRole="Banco" />
+    <NavigationProperty Name="Cita" Relationship="Self.FK_Cita_Consultorio" FromRole="Consultorio" ToRole="Cita" />
+    <NavigationProperty Name="PagoMico" Relationship="Self.FK_PagoMico_Consultorio" FromRole="Consultorio" ToRole="PagoMico" />
+    <NavigationProperty Name="Receta" Relationship="Self.FK_Receta_Consultorio" FromRole="Consultorio" ToRole="Receta" />
+    <NavigationProperty Name="TarifaConsultorio" Relationship="Self.FK_TarifaMico_Consultorio" FromRole="Consultorio" ToRole="TarifaConsultorio" />
+    <NavigationProperty Name="UsuarioMico" Relationship="Self.FK_UsuarioMico_Consultorio" FromRole="Consultorio" ToRole="UsuarioMico" />
+  </EntityType>
+  <EntityType Name="Cuenta">
+    <Key>
+      <PropertyRef Name="IdCuenta" />
+    </Key>
+    <Property Name="IdCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Municipio" Relationship="Self.FK_municipio_estado" FromRole="Estado" ToRole="Municipio" />
+  </EntityType>
+  <EntityType Name="LogEpcon">
+    <Key>
+      <PropertyRef Name="IdLogEpcon" />
+    </Key>
+    <Property Name="IdLogEpcon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuarioEpcon" Type="Int32" Nullable="false" />
+    <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Ip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="UsuarioEpcon" Relationship="Self.FK_LogEpcon_UsuarioEpcon" FromRole="LogEpcon" ToRole="UsuarioEpcon" />
+  </EntityType>
+  <EntityType Name="LogMico">
+    <Key>
+      <PropertyRef Name="IdLogMico" />
+    </Key>
+    <Property Name="IdLogMico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuarioMico" Type="Int32" Nullable="false" />
+    <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Ip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="UsuarioMico" Relationship="Self.FK_LogMico_UsuarioMico" FromRole="LogMico" ToRole="UsuarioMico" />
+  </EntityType>
+  <EntityType Name="Movimiento">
+    <Key>
+      <PropertyRef Name="IdMovimiento" />
+    </Key>
+    <Property Name="IdMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCuenta" Type="Int32" Nullable="false" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdCuentaOriginal" Type="Int32" />
+    <Property Name="IdCuentaDestino" Type="Int32" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Municipio">
+    <Key>
+      <PropertyRef Name="IdMunicipio" />
+    </Key>
+    <Property Name="IdMunicipio" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Estado" Relationship="Self.FK_municipio_estado" FromRole="Municipio" ToRole="Estado" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="IdPaciente" />
+    </Key>
+    <Property Name="IdPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CURP" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Genero" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fotografia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClavePaciente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumExt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="NumInt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CodigoPostal" Type="Int32" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <Property Name="Celular" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IdMunicipio" Type="Int32" />
+    <Property Name="IdEstado" Type="Int32" />
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PagoConsultorio">
+    <Key>
+      <PropertyRef Name="IdPagoConsultorio" />
+    </Key>
+    <Property Name="IdPagoConsultorio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPaciente" Type="Int32" Nullable="false" />
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" />
+    <Property Name="IdTarifa" Type="Int32" Nullable="false" />
+    <Property Name="Ajuste" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Observacion" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="PagoMico">
+    <Key>
+      <PropertyRef Name="IdPago" />
+    </Key>
+    <Property Name="IdPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" />
+    <Property Name="Subtotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Iva" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MetodoPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdPlan" Type="Int32" />
+    <Property Name="Observación" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IdTransaccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Comprobante" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Estatus" Type="Int32" />
+    <NavigationProperty Name="Consultorio" Relationship="Self.FK_PagoMico_Consultorio" FromRole="PagoMico" ToRole="Consultorio" />
+  </EntityType>
+  <EntityType Name="PlanPago">
+    <Key>
+      <PropertyRef Name="IdPlan" />
+    </Key>
+    <Property Name="IdPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Costo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Duracion" Type="Int32" Nullable="false" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Receta">
+    <Key>
+      <PropertyRef Name="IdReceta" />
+    </Key>
+    <Property Name="IdReceta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuarioMico" Type="Int32" Nullable="false" />
+    <Property Name="IdPaciente" Type="Int32" />
+    <Property Name="IdConsultorio" Type="Int32" />
+    <Property Name="IdConsulta" Type="Int32" />
+    <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FolioReceta" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Consultorio" Relationship="Self.FK_Receta_Consultorio" FromRole="Receta" ToRole="Consultorio" />
+    <NavigationProperty Name="UsuarioMico" Relationship="Self.FK_Receta_UsuarioMico" FromRole="Receta" ToRole="UsuarioMico" />
+  </EntityType>
+  <EntityType Name="TarifaConsultorio">
+    <Key>
+      <PropertyRef Name="IdTarifa" />
+    </Key>
+    <Property Name="IdTarifa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Costo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Consultorio" Relationship="Self.FK_TarifaMico_Consultorio" FromRole="TarifaConsultorio" ToRole="Consultorio" />
+  </EntityType>
+  <EntityType Name="UsuarioEpcon">
+    <Key>
+      <PropertyRef Name="IdUsuarioEpcon" />
+    </Key>
+    <Property Name="IdUsuarioEpcon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Usuario" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Privilegio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LogEpcon" Relationship="Self.FK_LogEpcon_UsuarioEpcon" FromRole="UsuarioEpcon" ToRole="LogEpcon" />
+  </EntityType>
+  <EntityType Name="UsuarioMico">
+    <Key>
+      <PropertyRef Name="IdUsuarioMico" />
+    </Key>
+    <Property Name="IdUsuarioMico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Privilegio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Consultorio" Relationship="Self.FK_UsuarioMico_Consultorio" FromRole="UsuarioMico" ToRole="Consultorio" />
+    <NavigationProperty Name="LogMico" Relationship="Self.FK_LogMico_UsuarioMico" FromRole="UsuarioMico" ToRole="LogMico" />
+    <NavigationProperty Name="Receta" Relationship="Self.FK_Receta_UsuarioMico" FromRole="UsuarioMico" ToRole="Receta" />
+  </EntityType>
+  <EntityType Name="Abono">
+    <Key>
+      <PropertyRef Name="IdAbono" />
+      <PropertyRef Name="IdPagoConsultorio" />
+      <PropertyRef Name="IdUsuarioMico" />
+      <PropertyRef Name="IdPaciente" />
+      <PropertyRef Name="Monto" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="IdConsultorio" />
+    </Key>
+    <Property Name="IdAbono" Type="Int32" Nullable="false" />
+    <Property Name="IdPagoConsultorio" Type="Int32" Nullable="false" />
+    <Property Name="IdUsuarioMico" Type="Int32" Nullable="false" />
+    <Property Name="IdPaciente" Type="Int32" Nullable="false" />
+    <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdConsultorio" Type="Int32" Nullable="false" />
+    <Property Name="Observacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Banco_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="1" />
+    <End Role="Banco" Type="Self.Banco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="Banco">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cita_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoMico_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="1" />
+    <End Role="PagoMico" Type="Self.PagoMico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="PagoMico">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receta_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="0..1" />
+    <End Role="Receta" Type="Self.Receta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="Receta">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TarifaMico_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="1" />
+    <End Role="TarifaConsultorio" Type="Self.TarifaConsultorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="TarifaConsultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioMico_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="1" />
+    <End Role="UsuarioMico" Type="Self.UsuarioMico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="IdConsultorio" />
+      </Principal>
+      <Dependent Role="UsuarioMico">
+        <PropertyRef Name="IdConsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_municipio_estado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="Municipio">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogEpcon_UsuarioEpcon">
+    <End Role="UsuarioEpcon" Type="Self.UsuarioEpcon" Multiplicity="1" />
+    <End Role="LogEpcon" Type="Self.LogEpcon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioEpcon">
+        <PropertyRef Name="IdUsuarioEpcon" />
+      </Principal>
+      <Dependent Role="LogEpcon">
+        <PropertyRef Name="IdUsuarioEpcon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogMico_UsuarioMico">
+    <End Role="UsuarioMico" Type="Self.UsuarioMico" Multiplicity="1" />
+    <End Role="LogMico" Type="Self.LogMico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioMico">
+        <PropertyRef Name="IdUsuarioMico" />
+      </Principal>
+      <Dependent Role="LogMico">
+        <PropertyRef Name="IdUsuarioMico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receta_UsuarioMico">
+    <End Role="UsuarioMico" Type="Self.UsuarioMico" Multiplicity="1" />
+    <End Role="Receta" Type="Self.Receta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioMico">
+        <PropertyRef Name="IdUsuarioMico" />
+      </Principal>
+      <Dependent Role="Receta">
+        <PropertyRef Name="IdUsuarioMico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MicoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Banco" EntityType="Self.Banco" />
+    <EntitySet Name="Cita" EntityType="Self.Cita" />
+    <EntitySet Name="Consultorio" EntityType="Self.Consultorio" />
+    <EntitySet Name="Cuenta" EntityType="Self.Cuenta" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" />
+    <EntitySet Name="LogEpcon" EntityType="Self.LogEpcon" />
+    <EntitySet Name="LogMico" EntityType="Self.LogMico" />
+    <EntitySet Name="Movimiento" EntityType="Self.Movimiento" />
+    <EntitySet Name="Municipio" EntityType="Self.Municipio" />
+    <EntitySet Name="Paciente" EntityType="Self.Paciente" />
+    <EntitySet Name="PagoConsultorio" EntityType="Self.PagoConsultorio" />
+    <EntitySet Name="PagoMico" EntityType="Self.PagoMico" />
+    <EntitySet Name="PlanPago" EntityType="Self.PlanPago" />
+    <EntitySet Name="Receta" EntityType="Self.Receta" />
+    <EntitySet Name="TarifaConsultorio" EntityType="Self.TarifaConsultorio" />
+    <EntitySet Name="UsuarioEpcon" EntityType="Self.UsuarioEpcon" />
+    <EntitySet Name="UsuarioMico" EntityType="Self.UsuarioMico" />
+    <EntitySet Name="Abono" EntityType="Self.Abono" />
+    <AssociationSet Name="FK_Banco_Consultorio" Association="Self.FK_Banco_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="Banco" EntitySet="Banco" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cita_Consultorio" Association="Self.FK_Cita_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoMico_Consultorio" Association="Self.FK_PagoMico_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="PagoMico" EntitySet="PagoMico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receta_Consultorio" Association="Self.FK_Receta_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="Receta" EntitySet="Receta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TarifaMico_Consultorio" Association="Self.FK_TarifaMico_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="TarifaConsultorio" EntitySet="TarifaConsultorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioMico_Consultorio" Association="Self.FK_UsuarioMico_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="UsuarioMico" EntitySet="UsuarioMico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_municipio_estado" Association="Self.FK_municipio_estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Municipio" EntitySet="Municipio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogEpcon_UsuarioEpcon" Association="Self.FK_LogEpcon_UsuarioEpcon">
+      <End Role="UsuarioEpcon" EntitySet="UsuarioEpcon" />
+      <End Role="LogEpcon" EntitySet="LogEpcon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogMico_UsuarioMico" Association="Self.FK_LogMico_UsuarioMico">
+      <End Role="UsuarioMico" EntitySet="UsuarioMico" />
+      <End Role="LogMico" EntitySet="LogMico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receta_UsuarioMico" Association="Self.FK_Receta_UsuarioMico">
+      <End Role="UsuarioMico" EntitySet="UsuarioMico" />
+      <End Role="Receta" EntitySet="Receta" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

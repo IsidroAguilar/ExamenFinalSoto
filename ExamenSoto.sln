@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaribeResortWebService", "CaribeResortWebService\CaribeResortWebService.csproj", "{5562A272-2C7A-42A3-8FFD-A976DED5556C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaribeResortLib", "CaribeResortLib\CaribeResortLib.csproj", "{1106CBA9-A549-427E-B31A-E4BD7AD1A7AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaribeResortClient", "CaribeResortClient\CaribeResortClient.csproj", "{6DB2497C-2D55-4389-A1C4-10E0BE086427}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppAdmin", "AppAdmin\AppAdmin.csproj", "{6E2819E3-E212-4D3E-8F7C-B2C09C69BB10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaUnitariaExamen", "PruebaUnitariaExamen\PruebaUnitariaExamen.csproj", "{2A640F4F-AAC9-44C2-919E-F3FCA9DB98B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5562A272-2C7A-42A3-8FFD-A976DED5556C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5562A272-2C7A-42A3-8FFD-A976DED5556C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5562A272-2C7A-42A3-8FFD-A976DED5556C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5562A272-2C7A-42A3-8FFD-A976DED5556C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1106CBA9-A549-427E-B31A-E4BD7AD1A7AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1106CBA9-A549-427E-B31A-E4BD7AD1A7AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1106CBA9-A549-427E-B31A-E4BD7AD1A7AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1106CBA9-A549-427E-B31A-E4BD7AD1A7AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB2497C-2D55-4389-A1C4-10E0BE086427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB2497C-2D55-4389-A1C4-10E0BE086427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB2497C-2D55-4389-A1C4-10E0BE086427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB2497C-2D55-4389-A1C4-10E0BE086427}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E2819E3-E212-4D3E-8F7C-B2C09C69BB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E2819E3-E212-4D3E-8F7C-B2C09C69BB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E2819E3-E212-4D3E-8F7C-B2C09C69BB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E2819E3-E212-4D3E-8F7C-B2C09C69BB10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A640F4F-AAC9-44C2-919E-F3FCA9DB98B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A640F4F-AAC9-44C2-919E-F3FCA9DB98B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A640F4F-AAC9-44C2-919E-F3FCA9DB98B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A640F4F-AAC9-44C2-919E-F3FCA9DB98B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

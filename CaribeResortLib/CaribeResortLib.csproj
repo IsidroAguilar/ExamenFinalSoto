@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1106CBA9-A549-427E-B31A-E4BD7AD1A7AD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CaribeResortLib</RootNamespace>
+    <AssemblyName>CaribeResortLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\MicoApp\bin\Kendo.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Auxiliar\Email.cs" />
+    <Compile Include="Auxiliar\Encripcion.cs" />
+    <Compile Include="Auxiliar\Parametro.cs" />
+    <Compile Include="Auxiliar\Serie.cs" />
+    <Compile Include="Models\Habitacion.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Helpers\EncriptacionHelper.cs" />
+    <Compile Include="Models\HotelModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Login.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginAdm.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pedidos.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Platillos.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Restaurantes.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuarios.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Models\HotelModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HotelModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\HotelModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotelModel.edmx</DependentUpon>
+      <LastGenOutput>HotelModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\HotelModel.edmx.diagram">
+      <DependentUpon>HotelModel.edmx</DependentUpon>
+    </None>
+    <None Include="Models\HotelModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotelModel.edmx</DependentUpon>
+      <LastGenOutput>HotelModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
